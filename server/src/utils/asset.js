@@ -33,6 +33,11 @@ const CHARACTERS = [
     CONTESSA, CONTESSA, CONTESSA
 ];
 
+const getCardByName = (name) => {
+    return CHARACTERS.find(character => character.name === name);
+}
+
 module.exports = {
     CHARACTERS,
+    getCardByName,
 };

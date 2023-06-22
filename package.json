@@ -1,7 +1,7 @@
 {
   "name": "coup",
   "version": "1.0.0",
-  "description": "Desktop game",
+  "description": "A Desktop game",
   "main": "index.js",
   "scripts": {
     "dev": "node index.js",
