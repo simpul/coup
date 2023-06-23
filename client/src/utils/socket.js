@@ -45,16 +45,19 @@ export default class Socket {
 
     // 加入房间
     joinRoom(username) {
+        console.log('socket emit joinRoom: ', username);
         this.socket.emit(JOIN_ROOM, username);
     }
 
     // 公共聊天
     publicChat(text) {
+        console.log('socket emit publicChat: ', text);
         this.socket.emit(PUBLIC_CHAT, text);
     }
 
     // 准备or取消准备
     changeReady(isReady) {
+        console.log('socket emit changeReady: ', isReady);
         this.socket.emit(CHANGE_READY, isReady);
     }
 
@@ -63,6 +66,7 @@ export default class Socket {
     }
 
     emit(eventName, data) {
+        console.log(`socket emit ${eventName}: `, data);
         this.socket.emit(eventName, data);
     }
 }

@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, onBeforeMount } from 'vue';
 import { useStore } from 'vuex';
 import SystemInfo from './systeminfo/SystemInfo.vue';
 import ChatRoom from './chatroom/ChatRoom.vue';
@@ -45,6 +45,13 @@ socket.on(QUERY_PLAYERS, (players) => {
 
 socket.on(CHANGE_STAGE, (stage) => {
     store.commit('updateStage', stage);
+});
+
+onBeforeMount(() => {
+    // 建立socket连接
+    const socket = new Socket();
+    const username = store.state.username;
+    socket.joinRoom(username); // 加入房间
 });
 
 const state = reactive({

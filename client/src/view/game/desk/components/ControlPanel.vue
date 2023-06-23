@@ -179,7 +179,10 @@ const confirmTarget = () => {
         message.error(`请选择你要${state.targetActionText}的目标玩家`);
         return;
     }
-    socket.emit(CHOOSE_TARGET, { action: state.targetAction, target: state.target });
+    const action = state.targetAction;
+    const target = state.target;
+    console.log(`socket emit ${CHOOSE_TARGET}:`, { action, target });
+    socket.emit(CHOOSE_TARGET, { action, target });
     state.target = '';
     state.showTargetList = false;
 };
@@ -199,7 +202,11 @@ const confirmCards = () => {
             return;
         }
     }
-    socket.emit(CHOOSE_CARD, { action: state.cardAction, cards: state.chooseHandCardIndex.map(index => state.handCardsList[index].name), chain: state.chain });
+    const action = state.cardAction;
+    const cards = state.chooseHandCardIndex.map(index => state.handCardsList[index].name);
+    const chain = state.chain;
+    console.log(`socket emit ${CHOOSE_CARD}:`, { action, cards, chain });
+    socket.emit(CHOOSE_CARD, { action, cards, chain });
     state.chooseHandCardIndex = [];
     state.chain = '';
     state.showHandCards = false;
@@ -207,6 +214,7 @@ const confirmCards = () => {
 
 // 确认选择是否反制
 const confirmChooseCounter = (counter) => {
+    console.log(`socket emit ${QUESTION_COUNTER}:`, { counter, action: state.action });
     socket.emit(QUESTION_COUNTER, { counter, action: state.action });
     state.action = '';
     state.showChooseCounter = false;
@@ -214,6 +222,7 @@ const confirmChooseCounter = (counter) => {
 
 // 确认选择是否质疑
 const confirmChooseDoubt = (doubt) => {
+    console.log(`socket emit ${QUESTION_DOUBT}:`, { doubt, action: state.action });
     socket.emit(QUESTION_DOUBT, { doubt, action: state.action });
     state.action = '';
     state.showChooseDoubt = false;
@@ -221,6 +230,7 @@ const confirmChooseDoubt = (doubt) => {
 
 // 确认选择是否自证
 const confirmSertificate = (canSertificate) => {
+    console.log(`socket emit ${SELF_SERTIFICATE}:`, { canSertificate, character: state.character, action: state.action });
     socket.emit(SELF_SERTIFICATE, { canSertificate, character: state.character, action: state.action });
     state.action = '';
     state.character = '';

@@ -57,7 +57,6 @@ import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { setUsername } from '../../utils/cookie';
-import Socket from '../../utils/socket';
 
 const router = useRouter();
 const store = useStore();
@@ -69,10 +68,8 @@ const formState = reactive({
 const onFinish = values => {
     const { username } = values;
     setUsername(username);
-    // 建立socket连接
-    const socket = new Socket();
-    socket.joinRoom(username); // 加入房间
     store.commit('updateStage', 'ready'); // 进入ready状态
+    store.commit('updateUsername', username); // 更新用户名
     router.push('/game');
 };
 const onFinishFailed = errorInfo => {

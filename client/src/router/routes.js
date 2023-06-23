@@ -1,6 +1,3 @@
-import Login from '../view/login/LoginIndex.vue';
-import Game from '../view/game/GameIndex.vue';
-
 export default [
     {
         path: '/',
@@ -9,11 +6,11 @@ export default [
     {
         path: '/login',
         name: 'Login',
-        component: Login,
+        component: () => import('../view/login/LoginIndex.vue'),
     },
     {
         path: '/game',
         name: 'Game',
-        component: Game,
+        component: () => import('../view/game/GameIndex.vue'),
     }
 ];

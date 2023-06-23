@@ -80,6 +80,7 @@ class Socket {
                 this.emitAll(SYSTEM_INFO, `${username} 加入了游戏`);
                 this.emitAll(QUERY_PLAYERS, Object.values(usocket).map((item) => item.username));
                 // 告知当前加入的玩家他的名字
+                console.log('触发joinroom', username);
                 socket.emit(JOIN_ROOM, username);
             });
 

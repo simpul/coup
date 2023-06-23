@@ -70,7 +70,7 @@ socket.on(NOTIFICATION, ({ type, message, description }) => {
 
 // 玩家确定执行行动
 const confirmAction = (key) => {
-    console.log('我执行了', key);
+    console.log(`socket emit(${ACTION}, { action: ${key} })`);
     socket.emit(ACTION, { action: key });
 };
 </script>
