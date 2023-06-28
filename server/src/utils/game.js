@@ -228,11 +228,13 @@ function playerAction(usocket/* { socket.id: { username, socket } } */, id, acti
         }
 
         if (currentPlayer.coins >= 10 && action !== 'coup') {
-            return socket.emit(NOTIFICATION, {
+            socket.emit(IS_ON_TURN, true);
+            socket.emit(NOTIFICATION, {
                 type: 'warning',
                 message: '系统通知',
                 description: '您的金币数量大于等于10，只能执行政变',
             });
+            return;
         }
 
         const otherLivePlayers = game.getLivePlayers(currentPlayer.username);
@@ -255,6 +257,7 @@ function playerAction(usocket/* { socket.id: { username, socket } } */, id, acti
             case 'coup':
                 // 执行政变
                 if (currentPlayer.coins < 7) {
+                    socket.emit(IS_ON_TURN, true);
                     return socket.emit(NOTIFICATION, {
                         type: 'warning',
                         message: '系统通知',
@@ -279,6 +282,7 @@ function playerAction(usocket/* { socket.id: { username, socket } } */, id, acti
             case 'assassinate':
                 // 执行暗杀
                 if (currentPlayer.coins < 3) {
+                    socket.emit(IS_ON_TURN, true);
                     return socket.emit(NOTIFICATION, {
                         type: 'warning',
                         message: '系统通知',

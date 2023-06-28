@@ -72,5 +72,6 @@ socket.on(NOTIFICATION, ({ type, message, description }) => {
 const confirmAction = (key) => {
     console.log(`socket emit(${ACTION}, { action: ${key} })`);
     socket.emit(ACTION, { action: key });
+    state.isMyTurn = false;
 };
 </script>
