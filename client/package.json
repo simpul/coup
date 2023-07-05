@@ -23,6 +23,7 @@
     "less": "^4.1.3",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.2",
+    "vite-code-inspector-plugin": "^0.0.18",
     "vite-plugin-eslint": "^1.8.1"
   }
 }
