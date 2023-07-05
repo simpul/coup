@@ -4,6 +4,8 @@
   "description": "A Desktop game",
   "main": "index.js",
   "scripts": {
+    "start": "node server/src/index.js",
+    "init": "cd client && npm install --registry=https://registry.npmjs.org/ && cd ../server && npm install --registry=https://registry.npmjs.org/",
     "dev": "node index.js",
     "debug": "node --inspect-brk index.js",
     "build": "cd client && npm run build"

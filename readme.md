@@ -1,4 +1,31 @@
-## 规则
+## 本地部署
+
+``` bash
+# 下载依赖
+npm run init
+# 打包前端资源
+npm run build
+# 启动服务
+npm run start
+```
+
+访问localhost:3000
+
+
+
+## docker
+
+``` bash
+# build
+docker build -t coup .
+
+# run
+docker run -d -p 3000:3000 coup
+```
+
+
+
+## 游戏规则
 
 游戏配置
 
