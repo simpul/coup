@@ -8,6 +8,7 @@
     "init": "cd client && npm install --registry=https://registry.npmjs.org/ && cd ../server && npm install --registry=https://registry.npmjs.org/",
     "dev": "node index.js",
     "debug": "node --inspect-brk index.js",
+    "build:local": "cd client && npm run build:staging",
     "build": "cd client && npm run build"
   },
   "author": "simple",

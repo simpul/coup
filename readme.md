@@ -4,7 +4,7 @@
 # 下载依赖
 npm run init
 # 打包前端资源
-npm run build
+npm run build:local
 # 启动服务
 npm run start
 ```
@@ -17,7 +17,7 @@ npm run start
 
 ``` bash
 # build
-docker build -t coup .
+docker build -t coup --target local .
 
 # run
 docker run -d -p 3000:3000 coup
